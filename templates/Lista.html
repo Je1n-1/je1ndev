@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">       
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jogoteca</title>
-    <link rel="stylesheet" href="main.css">
+    <meta name="description" content="Portfólio de Jean Land - Desenvolvedor">
+    <title>Portfólio - Jean Land</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/barra_nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer_sobre.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/habilidades.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/projetos.css') }}">
+
+
+    <!-- Ícones e Fontes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,21 +25,22 @@
 <body>
     <header class="header">
         <section class="informacoes_container">
-            <img class="perfil_imagem" src="../img/perfil.jpg" alt="Foto de perfil de Jean Land">
+            <img class="perfil_imagem" 
+                 src="{{ url_for('static', filename='img/perfil.jpg') }}" 
+                 alt="Foto de perfil de Jean Land"
+                 loading="lazy">
             <div class="informacoes">
                 <h2>{{nome}}</h2>
                 <h1 class="titulo">{{profissao}}</h1>
-                <p class="descricao">
-                    {{slogan}}
-                </p>
-            </div>
+                <p class="descricao">{{slogan}}</p>
+            </div>  
         </section>
 
-        <nav class="barra-lateral">
-            <a href="#sobre" title="Sobre mim">👤</a>
-            <a href="#habilidades" title="Habilidades">🛠️</a>
-            <a href="#projetos" title="Projetos">💻</a>
-            <a href="#contato" title="Contato">✉️</a>
+        <nav class="barra-lateral" aria-label="Navegação principal">
+            <a href="#sobre" title="Sobre mim" aria-label="Sobre mim">👤</a>
+            <a href="#habilidades" title="Habilidades" aria-label="Habilidades">🛠️</a>
+            <a href="#projetos" title="Projetos" aria-label="Projetos">💻</a>
+            <a href="#contato" title="Contato" aria-label="Contato">✉️</a>
         </nav>
     </header>
 
@@ -36,9 +48,7 @@
         <section id="sobre" class="sobre">
             <div> 
                 <h2>Sobre</h2>
-                <p class="descricao">
-                    {{sobre}}
-                </p>  
+                <p class="descricao">{{sobre}}</p>  
             </div>
             <div>
                 <p class="descricao">{{evolucao}}</p>
@@ -48,14 +58,14 @@
         <section id="habilidades" class="habilidades">
             <h2>Skills</h2>
             <ul class="lista-habilidades">
-                <li><i class="devicon-python-plain colored"></i> Python</li>
-                <li><i class="devicon-html5-plain colored"></i> HTML5</li>
-                <li><i class="devicon-css3-plain colored"></i> CSS3</li>
-                <li><i class="devicon-javascript-plain colored"></i> JavaScript</li>
-                <li><i class="devicon-git-plain colored"></i> Git</li>
-                <li><i class="devicon-github-original"></i> GitHub</li>
-                <li><i class="devicon-react-original colored"></i> React</li>
-                <li><i class="devicon-nodejs-plain colored"></i> Node.js</li>
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i> Python</li>
+                <li><i class="devicon-html5-plain colored" aria-hidden="true"></i> HTML5</li>
+                <li><i class="devicon-css3-plain colored" aria-hidden="true"></i> CSS3</li>
+                <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</li>
+                <li><i class="devicon-git-plain colored" aria-hidden="true"></i> Git</li>
+                <li><i class="devicon-github-original" aria-hidden="true"></i> GitHub</li>
+                <li><i class="devicon-react-original colored" aria-hidden="true"></i> React</li>
+                <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i> Node.js</li>
             </ul>
         </section>
 
@@ -71,18 +81,18 @@
                 <p>{{interativo}}</p>
                 <p>{{logica}}</p>
                 <p>{{feedback}}</p>
-                <a href="https://je1n-1.github.io/Jogo_do_numero_secreto/" class="projeto-link">Ver</a>
+                <a href="https://je1n-1.github.io/Jogo_do_numero_secreto/" class="projeto-link" target="_blank" rel="noopener noreferrer">Ver</a>
             </article>
             <article class="projeto-card">
                 <h3>{{codeconnect}}</h3>
                 <p>{{educacao}}</p>
-                <a href="https://je1n-1.github.io/CodeConnect-JS-Ass-ncrono/" class="projeto-link">Ver</a>
+                <a href="https://je1n-1.github.io/CodeConnect-JS-Ass-ncrono/" class="projeto-link" target="_blank" rel="noopener noreferrer">Ver</a>
             </article>
             <article class="projeto-card">
                 <h3>{{restaurante}}</h3>
                 <p>{{api}}</p> 
                 <p>{{gestao}}</p>
-                <a href="https://github.com/Je1n-1" class="projeto-link">Ver</a>
+                <a href="https://github.com/Je1n-1" class="projeto-link" target="_blank" rel="noopener noreferrer">Ver</a>
             </article>
         </section>
     </main>
@@ -91,13 +101,17 @@
         <h2>Contato</h2>
         <p>{{email}}</p>
         <div class="social-links">
-            <a href="https://github.com/Je1n-1" target="_blank"><i class="devicon-github-original"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/jeanLand/" target="_blank"><i class="devicon-linkedin-plain"></i> LinkedIn</a>
+            <a href="https://github.com/Je1n-1" target="_blank" rel="noopener noreferrer">
+                <i class="devicon-github-original" aria-hidden="true"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/jeanLand/" target="_blank" rel="noopener noreferrer">
+                <i class="devicon-linkedin-plain" aria-hidden="true"></i> LinkedIn
+            </a>
         </div>
     </aside>
 
     <footer>
         <p>© 2024 {{nome}}. {{dinamismo}}.</p>
     </footer>
-
-    <script src="main.js"></script>
+</body>
+</html>
